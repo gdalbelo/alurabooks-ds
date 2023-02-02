@@ -1,26 +1,39 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
 
-import { AbBotao, AbBotaoProps } from '../src';
+export interface AbBotaoProps {
+    texto?: string
+    tipo?: 'primario' | 'secundario'
+    onClick?: () => void
+}
 
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+const BotaoEstilizado = styled.button<AbBotaoProps>`
+    background: ${(props: AbBotaoProps) => props.tipo === 'primario' ? '#EB9B00' : '#FFF'};
+    padding: 16px 32px;
+    border: 2px solid #EB9B00;
+    color: #FFF;
+    color: ${(props: AbBotaoProps) => props.tipo === 'primario' ? '#FFF' : '#EB9B00'};
+    font-size: 20px;
+    cursor: pointer;
+    ${(props: AbBotaoProps) => props.tipo === 'primario'
+        ? css`
+            &:hover {
+                background: #EB7900;
+                border: 2px solid #EB9B00;
+            }  
+        `
+        : css`
+            &:hover {
+                background: #FFF;
+                border: 2px solid #BB7900;
+                color: #BB7900;
+            }
+        `
+    }
+`
 
-export default {
-    title: 'Componentes/AbBotao',
-    component: AbBotao
-} as ComponentMeta<typeof AbBotao>
-
-const Template: ComponentStory<typeof AbBotao> = (args) => <AbBotao {...args} />;
-
-export const Primario = Template.bind({});
-
-Primario.args = {
-    textp: 'Ab Botão Primário',
-    tipo: 'primario'
-} as AbBotaoProps
-
-export const Secundario = Template.bind({});
-
-Secundario.args = {
-    textp: 'Ab Botão Secundário',
-    tipo: 'secundario'
-} as AbBotaoProps
+export const AbBotao = ({ texto, onClick, tipo = 'primario'} : AbBotaoProps) => {
+    return (<BotaoEstilizado onClick={onClick} tipo={tipo}>
+        {texto}
+    </BotaoEstilizado>)
+}
