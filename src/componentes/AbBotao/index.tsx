@@ -1,21 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const BotaoEstilizado = styled.button`
-    background: #EB9B00;
-    padding: 16px 32px;
-    border: 2px solid #EB9B00;
-    color: #FFF;
-    font-size: 20px;
-    cursor: pointer;
-    &:hover {
-        background: #EB7900;
-        border: 2px solid #EB9B00;
-    }
-`
+import { AbBotao, AbBotaoProps } from '../src';
 
-export const AbBotao = () => {
-    return (<BotaoEstilizado>
-        Clique aqui!
-    </BotaoEstilizado>)
-}
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+
+export default {
+    title: 'Componentes/AbBotao',
+    component: AbBotao
+} as ComponentMeta<typeof AbBotao>
+
+const Template: ComponentStory<typeof AbBotao> = (args) => <AbBotao {...args} />;
+
+export const Primario = Template.bind({});
+
+Primario.args = {
+    textp: 'Ab Botão Primário',
+    tipo: 'primario'
+} as AbBotaoProps
+
+export const Secundario = Template.bind({});
+
+Secundario.args = {
+    textp: 'Ab Botão Secundário',
+    tipo: 'secundario'
+} as AbBotaoProps
