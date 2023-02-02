@@ -35,7 +35,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "alurabooks-ds",
+  "name": "alurabooks-gsdb",
   "author": "Gabriel Santos Dal Belo",
   "module": "dist/alurabooks-ds.esm.js",
   "size-limit": [
